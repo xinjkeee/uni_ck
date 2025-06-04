@@ -1,0 +1,57 @@
+{% extends 'reviews/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Reviews - Book Review Platform{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Reviews</h1>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Filter Reviews</h5>
+            <form method="get">
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary mt-2">Apply Filters</button>
+                <a href="{% url 'review-list' %}" class="btn btn-outline-secondary mt-2">Clear Filters</a>
+            </form>
+        </div>
+    </div>
+
+    {% if reviews %}
+        <div class="row">
+            {% for review in reviews %}
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title">
+                                    <a href="{% url 'book-detail' review.book.pk %}">
+                                        {{ review.book.title }}
+                                    </a>
+                                </h5>
+                                <span class="badge bg-{{ review.sentiment }}">
+                                    {{ review.sentiment|title }}
+                                </span>
+                            </div>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                by {{ review.user.username }}
+                            </h6>
+                            <p class="card-text">{{ review.text }}</p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    Posted on {{ review.created_at|date:"F d, Y" }}
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            No reviews found matching your criteria.
+        </div>
+    {% endif %}
+</div>
+{% endblock %} 

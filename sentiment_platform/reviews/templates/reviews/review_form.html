@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Write a Review - Book Review Sentiment Analysis{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Write a Review for {{ book.title }}</h2>
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary">Submit Review</button>
+            <a href="{% url 'book-detail' pk=book.pk %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %} 

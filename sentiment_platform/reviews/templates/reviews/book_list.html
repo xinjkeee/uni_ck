@@ -1,0 +1,46 @@
+{% extends 'reviews/base.html' %}
+
+{% block title %}Books - Book Review Sentiment Analysis{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Book List</h1>
+
+    <div class="mb-4">
+        <form method="get" class="card card-body">
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+    </div>
+
+    <div class="row">
+        {% for book in books %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">by {{ book.author }}</h6>
+                        <p class="card-text">{{ book.description|truncatechars:150 }}</p>
+                        <a href="{% url 'book-detail' book.id %}" class="btn btn-primary">View Details</a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'book-update' book.id %}" class="btn btn-secondary">Edit</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <div class="alert alert-info">
+                    No books found.
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="mt-4">
+        {% if user.is_authenticated %}
+            <a href="{% url 'book-create' %}" class="btn btn-success">Add New Book</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 

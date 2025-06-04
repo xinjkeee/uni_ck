@@ -1,0 +1,64 @@
+{
+  "reviews": [
+    {
+      "book_title": "1984",
+      "author": "George Orwell",
+      "reviews": [
+        {
+          "title": "A Masterpiece of Dystopian Fiction",
+          "text": "This book is absolutely brilliant. The way Orwell portrays a totalitarian society is both frightening and thought-provoking. The character development is exceptional, and the story keeps you on edge throughout. A must-read for everyone.",
+          "rating": 5,
+          "date": "2024-04-28",
+          "reviewer": "BookLover123"
+        },
+        {
+          "title": "Depressing but Important",
+          "text": "While the book is quite dark and sometimes difficult to read, its message about surveillance and control is more relevant than ever. The writing is excellent but be prepared for a heavy emotional impact.",
+          "rating": 4,
+          "date": "2024-04-27",
+          "reviewer": "LitCritic"
+        }
+      ]
+    },
+    {
+      "book_title": "The Master and Margarita",
+      "author": "Mikhail Bulgakov",
+      "reviews": [
+        {
+          "title": "Magical and Complex",
+          "text": "A fascinating blend of satire, fantasy, and historical fiction. The story is complex but rewarding, with memorable characters and beautiful prose. The supernatural elements are particularly well done.",
+          "rating": 5,
+          "date": "2024-04-26",
+          "reviewer": "ClassicsReader"
+        },
+        {
+          "title": "Confusing but Beautiful",
+          "text": "I found the multiple plotlines somewhat difficult to follow, but the writing is beautiful and the imagery is unforgettable. The scenes with the cat are particularly entertaining.",
+          "rating": 3,
+          "date": "2024-04-25",
+          "reviewer": "NovelEnthusiast"
+        }
+      ]
+    },
+    {
+      "book_title": "Crime and Punishment",
+      "author": "Fyodor Dostoevsky",
+      "reviews": [
+        {
+          "title": "Psychological Masterpiece",
+          "text": "An incredible exploration of guilt, redemption, and moral philosophy. Dostoevsky's ability to delve into the psychology of his characters is unmatched. The pacing can be slow at times, but it's worth it.",
+          "rating": 5,
+          "date": "2024-04-24",
+          "reviewer": "RussianLitFan"
+        },
+        {
+          "title": "Dense but Rewarding",
+          "text": "This is not an easy read, but it's incredibly rewarding. The psychological depth and moral questions raised are fascinating. However, some parts drag on and could have been more concise.",
+          "rating": 4,
+          "date": "2024-04-23",
+          "reviewer": "BookwormPro"
+        }
+      ]
+    }
+  ]
+} 

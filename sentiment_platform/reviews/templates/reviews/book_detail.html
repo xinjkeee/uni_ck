@@ -1,0 +1,101 @@
+{% extends 'reviews/base.html' %}
+
+{% block title %}{{ book.title }} - Book Review Sentiment Analysis{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% if using_sample_data %}
+        <div class="alert alert-info mb-4">
+            Currently using sample data for demonstration purposes.
+        </div>
+    {% endif %}
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h1 class="card-title">{{ book.book_title|default:book.title }}</h1>
+            <h3 class="card-subtitle mb-3 text-muted">by {{ book.author }}</h3>
+            
+            {% if not using_sample_data %}
+                <p class="card-text">{{ book.description }}</p>
+                <p class="card-text">
+                    <small class="text-muted">Published: {{ book.published_date }}</small>
+                </p>
+                
+                {% if user.is_authenticated %}
+                    <div class="mb-3">
+                        <a href="{% url 'book-update' book.pk %}" class="btn btn-primary">Edit Book</a>
+                        <a href="{% url 'book-delete' book.pk %}" class="btn btn-danger">Delete Book</a>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Description</h3>
+                    <p class="card-text">{{ book.description }}</p>
+                    <p class="text-muted">Published: {{ book.published_date }}</p>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <h3>Reviews</h3>
+                {% if reviews %}
+                    {% for review in reviews %}
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title">{{ review.user.username }}</h5>
+                                    <span class="badge bg-{% if review.sentiment == 'positive' %}success{% elif review.sentiment == 'negative' %}danger{% else %}warning{% endif %}">
+                                        {{ review.sentiment|title }}
+                                    </span>
+                                </div>
+                                <p class="card-text">{{ review.text }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">{{ review.created_at }}</small>
+                                    {% if review.reviewrating %}
+                                        <div class="rating">
+                                            {% for i in "12345"|make_list %}
+                                                {% if forloop.counter <= review.reviewrating.rating %}
+                                                    <span class="text-warning">★</span>
+                                                {% else %}
+                                                    <span class="text-muted">☆</span>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="alert alert-info">
+                        No reviews yet. Be the first to review this book!
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            {% if user.is_authenticated %}
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Write a Review</h4>
+                        <a href="{% url 'create-review' book.id %}" class="btn btn-primary">Add Review</a>
+                    </div>
+                </div>
+            {% else %}
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Want to review this book?</h4>
+                        <p>Please <a href="{% url 'login' %}">login</a> to write a review.</p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

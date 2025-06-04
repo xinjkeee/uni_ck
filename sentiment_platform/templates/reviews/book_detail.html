@@ -1,0 +1,59 @@
+{% extends 'reviews/base.html' %}
+
+{% block title %}{{ book.title }} - Book Review Platform{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            {% if book.cover_image %}
+                <img src="{{ book.cover_image.url }}" class="img-fluid rounded" alt="{{ book.title }}">
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <h1>{{ book.title }}</h1>
+            <h3 class="text-muted">by {{ book.author }}</h3>
+            <p class="lead">{{ book.description }}</p>
+            <p><strong>Published:</strong> {{ book.published_date|date:"Y" }}</p>
+            
+            {% if user.is_authenticated %}
+                <div class="btn-group mb-4">
+                    <a href="{% url 'book-update' book.pk %}" class="btn btn-outline-primary">Edit Book</a>
+                    <a href="{% url 'book-delete' book.pk %}" class="btn btn-outline-danger">Delete Book</a>
+                    <a href="{% url 'review-create' book.pk %}" class="btn btn-success">Add Review</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>Reviews</h2>
+            {% if reviews %}
+                {% for review in reviews %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title">{{ review.user.username }}</h5>
+                                <span class="badge bg-{{ review.sentiment }}">
+                                    {{ review.sentiment|title }}
+                                </span>
+                            </div>
+                            <p class="card-text">{{ review.text }}</p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    Posted on {{ review.created_at|date:"F d, Y" }}
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-info">
+                    No reviews yet. Be the first to review this book!
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

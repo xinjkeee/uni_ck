@@ -1,0 +1,26 @@
+{% extends 'reviews/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Add Review - Book Review Platform{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Add Review for {{ book.title }}</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-primary">Submit Review</button>
+                            <a href="{% url 'book-detail' book.pk %}" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

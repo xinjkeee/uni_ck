@@ -1,0 +1,81 @@
+{
+    "books": [
+        {
+            "title": "1984",
+            "author": "George Orwell",
+            "description": "A dystopian social science fiction novel and cautionary tale.",
+            "reviews": [
+                {
+                    "title": "A masterpiece of dystopian literature",
+                    "text": "This book completely changed my perspective on government control and surveillance. The world Orwell created is terrifyingly plausible.",
+                    "rating": 5,
+                    "date": "2024-04-15",
+                    "author": "BookLover42"
+                },
+                {
+                    "title": "Thought-provoking but difficult",
+                    "text": "While the concepts are fascinating, I found the writing style a bit dry. Still worth reading for the important message.",
+                    "rating": 4,
+                    "date": "2024-04-10",
+                    "author": "LiteraryExplorer"
+                },
+                {
+                    "title": "Overrated in my opinion",
+                    "text": "I understand why this is considered a classic, but I found it too depressing and the characters unrelatable.",
+                    "rating": 3,
+                    "date": "2024-04-05",
+                    "author": "CriticalReader"
+                }
+            ]
+        },
+        {
+            "title": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
+            "description": "A novel about the American Dream and the Roaring Twenties.",
+            "reviews": [
+                {
+                    "title": "Timeless classic",
+                    "text": "Fitzgerald's prose is absolutely beautiful. The themes of wealth, love, and the American Dream are still relevant today.",
+                    "rating": 5,
+                    "date": "2024-04-12",
+                    "author": "ClassicBookFan"
+                },
+                {
+                    "title": "Beautiful but tragic",
+                    "text": "The writing is exquisite, but the story is heartbreaking. Gatsby's pursuit of the American Dream is both inspiring and devastating.",
+                    "rating": 4,
+                    "date": "2024-04-08",
+                    "author": "RomanticReader"
+                }
+            ]
+        },
+        {
+            "title": "To Kill a Mockingbird",
+            "author": "Harper Lee",
+            "description": "A novel about racial injustice and moral growth in the American South.",
+            "reviews": [
+                {
+                    "title": "Essential reading",
+                    "text": "This book should be required reading for everyone. The themes of justice, racism, and moral courage are as relevant today as ever.",
+                    "rating": 5,
+                    "date": "2024-04-14",
+                    "author": "SocialJusticeReader"
+                },
+                {
+                    "title": "Powerful and moving",
+                    "text": "Harper Lee's portrayal of childhood innocence confronting adult prejudice is masterful. Atticus Finch is one of literature's greatest heroes.",
+                    "rating": 5,
+                    "date": "2024-04-09",
+                    "author": "BookWorm2024"
+                },
+                {
+                    "title": "Good but overhyped",
+                    "text": "While it's a good book with important themes, I think it's sometimes given more credit than it deserves. Still worth reading though.",
+                    "rating": 4,
+                    "date": "2024-04-06",
+                    "author": "BalancedReader"
+                }
+            ]
+        }
+    ]
+} 
